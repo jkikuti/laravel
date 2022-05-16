@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      args:
+        user: Kikuti
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: kikuti/laravel-app
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www/
+    restart: unless-stopped
+    networks:
+      - net-laravel
+
+networks:
+  net-laravel:
+    driver: bridge
+
